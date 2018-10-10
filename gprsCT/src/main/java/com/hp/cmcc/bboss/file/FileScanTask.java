@@ -38,17 +38,17 @@ public class FileScanTask {
             @Override
             public void run() {
 	           	try {
-		            	File[] files = new FileScanThread(SrcConfig.INCOMING_SRC).call();
-		 				if(files.length > 0){
-		 					for(File f : files){
-		 						GprsLog gprsLog2 = gprsLogDao.findByFileName(f.getName());
-		 						List<String> list = fileHandleUtils.getFileBody(f,SrcConfig.BAK_SRC);
-		 						if(PubTools.IsEmpty(gprsLog2) || "F".equals(gprsLog2.getIsStore())){
-		 							gprsLogService.saveOne(new GprsLog(f.getName(),"F"));
-		 							gprsService.storeAll(GprsCtTools.getObjList(list, f.getName()), f.getName());
-		 						}
-		 					}
-		 				}
+	            	File[] files = new FileScanThread(SrcConfig.INCOMING_SRC).call();
+	 				if(files.length > 0){
+	 					for(File f : files){
+	 						GprsLog gprsLog2 = gprsLogDao.findByFileName(f.getName());
+	 						List<String> list = fileHandleUtils.getFileBody(f,SrcConfig.BAK_SRC);
+	 						if(PubTools.IsEmpty(gprsLog2) || "F".equals(gprsLog2.getIsStore())){
+	 							gprsLogService.saveOne(new GprsLog(f.getName(),"F"));
+	 							gprsService.storeAll(GprsCtTools.getObjList(list, f.getName()), f.getName());
+	 						}
+	 					}
+	 				}
 	           	} catch (Exception e) {
 	           		logger.error("file save to database failed",e);
 	           	}

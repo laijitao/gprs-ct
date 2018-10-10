@@ -11,10 +11,10 @@ public class GprsCtTools {
 		String S[] = record.split(";",-1);
 		GprsCt gprsCt = new GprsCt();
 		gprsCt.setFileName(fileName);
-		gprsCt.setRecMark(getValue(S,0).trim());
-		gprsCt.setMsisdn(getValue(S,1).trim());
-		gprsCt.setServiceid(getValue(S,2).trim());
-		gprsCt.setDataValue(getValue(S,3).trim());
+		gprsCt.setRecMark(getValue(S,0));
+		gprsCt.setMsisdn(getValue(S,1));
+		gprsCt.setServiceid(getValue(S,2));
+		gprsCt.setDataValue(getValue(S,3));
 		return gprsCt;
 	}
 	
@@ -27,7 +27,7 @@ public class GprsCtTools {
 	}
 	
 	public static String getValue(String[] S, int index){
-		return PubTools.IsEmpty(S[index]) ? null : S[index];
+		return PubTools.IsEmpty(S[index].trim()) ? null : S[index].trim();
 	}
 	
 }

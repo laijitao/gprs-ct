@@ -20,6 +20,6 @@ public class DoMain {
 	 */ 
 	public void doTask(){
 		compareTaskTimer.compareTaskTimer();//比对任务
-		fileScanTask.fileScan();
+		fileScanTask.fileScan();//文件扫描
 	}
 }
