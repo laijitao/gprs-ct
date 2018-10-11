@@ -29,7 +29,7 @@ public class CompareTaskTimer {
         // 首次运行时间
         try {
             Date startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(sdf.format(new Date()));
-            // 如果今天的已经过了 首次运行时间就改为明天
+            // 如果当前时间已经过规定的比对时间，则首次运行时间就改为明天
             if (System.currentTimeMillis() > startTime.getTime()){
                 startTime = new Date(startTime.getTime() + daySpan);
             }
@@ -40,7 +40,7 @@ public class CompareTaskTimer {
                 	compareService.compare();
                 }
             };
-            // 以每24小时执行一次
+            // 每24小时执行一次
             t.schedule(task, startTime, daySpan);
         } catch (Exception e) {
             logger.error("timer exception!",e);
