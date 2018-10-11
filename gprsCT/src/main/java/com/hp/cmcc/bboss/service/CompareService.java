@@ -64,7 +64,7 @@ public class CompareService {
 	/** 
 	 * @Title: handleCompare 
 	 * @Description: 执行数据比对
-	 * @param @param date
+	 * @param @param date：比对文件名中的日期
 	 * @param @return    参数 
 	 * @return String    返回类型 
 	 * @throws 
