@@ -79,7 +79,7 @@ public class CompareService {
 			return "this file is already compared!";
 		}else{
 			gprsComDao.deleteAll();
-			jdbc.update(PubTools.setSql(PubTools.SQL, date.substring(0,date.length()-2)+";"+date));
+			jdbc.update(PubTools.setSql(PubTools.SQL, date.substring(0,date.length()-2)+";"+date));//加载数据
 			gprsResultDao.save(compare.fileCompare(date));
 			gprsResultDao.save(compare.dataCompare(date));
 			gprsLogDao.updateIsComparedByFileNameLike("T", "%"+date+"%");
